@@ -21,3 +21,5 @@ Escopo concreto (ver `dados/referencias/` pro detalhamento):
 ## O que pode esperar
 
 ## Contexto com prazo
+
+- **2026-08-17 (previsão):** dono vai passar acesso ao DWV — plataforma com milhares de imóveis da região de Balneário Camboriú. Objetivo: puxar o catálogo real pro site (substituindo os imóveis mock em `site/lib/data.ts`) e construir uma busca com ranking de "mais procurados" dentro do site. Isso é upgrade grande de arquitetura: sai de dados estáticos hardcoded, entra integração com feed/API externa — avaliar formato de acesso (API, export, scraping autorizado) assim que o acesso chegar antes de desenhar a solução.
