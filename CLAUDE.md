@@ -1,11 +1,9 @@
-# MazyOS — Sistema operacional do negócio
+# Kipe Imóveis — MazyOS
 
 Sua empresa roda em cima desse arquivo. Aqui ficam as regras de operação
 do MazyOS — como o Claude lê o contexto, aprende com correções, mantém
-tudo atualizado e cria skills novas conforme a operação evolui.
-
-Esse arquivo é editável. Quando o `/instalar` rodar, ele complementa o
-final dessa página com as regras específicas do seu negócio.
+tudo atualizado e cria skills novas conforme a operação evolui — seguidas
+das regras específicas da Kipe Imóveis.
 
 ---
 
@@ -113,3 +111,53 @@ Quando o usuário pedir skill nova:
 4. Se a skill precisar de arquivos de apoio (templates, exemplos),
    criar dentro da pasta da skill
 5. Seguir o fluxo da skill-creator nativa do Claude Code
+
+---
+
+## Sobre a Kipe Imóveis
+
+**O que é esse workspace**
+Operação da Kipe Imóveis — imobiliária digital de alto padrão, focada
+em imóveis de luxo em Balneário Camboriú/SC. O dono toca o negócio
+sozinho, com o Claude e os agentes de IA como equipe de apoio.
+
+**Quem sou**
+Dono único da Kipe Imóveis. Entrego autonomia e agilidade pra quem
+quer comprar imóvel de alto padrão em BC — sem enrolação, sem
+intermediário travando o processo. Site próprio (não depende de
+portal), SEO de bairro e atendimento automatizado no WhatsApp.
+
+**Minha audiência**
+Foco em leads qualificados que realmente querem comprar, não curiosos.
+Personas do nicho de alto padrão em BC: investidor paulista/carioca,
+família de alta renda, aposentado/segunda residência,
+executivo/empresário, comprador de fora do estado.
+
+**Tom de voz**
+Direto, sem gírias, sem emojis, sem jargão de guru. Exemplo real:
+"Kipe Imóveis, a sua imobiliária 100% focada no seu negócio."
+
+Evitar: gírias, emojis, "alavancar", "sinergia", "vamos juntos!" e afins.
+
+**Posicionamento**
+Chegar ao topo da rede de pesquisa e construir um ecossistema autônomo
+— SEO de bairro, atendimento automatizado no WhatsApp e conteúdo
+rodando sozinhos, sem depender do dono pra cada passo. Visual "Quiet
+Luxury Digital" (ver `identidade/design-guide.md`).
+
+**Fonte de verdade adicional**
+`dados/referencias/` tem 3 guias completos escritos antes do
+`/instalar` — visual, SEO/site e arquitetura de automação. Consultar
+antes de decisão de produto, visual ou técnica pra Kipe Imóveis.
+
+**Regras do sistema**
+- Estruturar o sistema pra rodar 100% autônomo é prioridade atual —
+  candidata a virar skill via `/mapear-rotinas`
+- Conteúdo novo salvar em `marketing/conteudo/<tipo>-<tema>-<data>/`
+
+**Ferramentas conectadas**
+- [ ] Google Ads
+- [ ] Meta Ads
+- [ ] Google Search Console / GMB
+
+*(Marcar conforme for instalando os MCPs)*
