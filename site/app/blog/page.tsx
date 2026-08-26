@@ -49,7 +49,7 @@ export default function BlogPage() {
         <section className="bg-white py-20">
           <div className="mx-auto max-w-5xl px-6 md:px-8">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {BLOG_POSTS.map((post, i) => (
+              {BLOG_POSTS.filter((post) => !post.draft).map((post, i) => (
                 <Reveal key={post.slug} delay={i * 90}>
                   <Link
                     href={`/blog/${post.slug}`}

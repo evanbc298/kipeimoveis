@@ -14,7 +14,7 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return BLOG_POSTS.map((p) => ({ slug: p.slug }));
+  return BLOG_POSTS.filter((p) => !p.draft).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -38,9 +38,11 @@ function formatDate(iso: string) {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
-  if (!post) notFound();
+  if (!post || post.draft) notFound();
 
-  const outros = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const outros = BLOG_POSTS.filter(
+    (p) => p.slug !== post.slug && !p.draft
+  ).slice(0, 2);
 
   const jsonLd = {
     "@context": "https://schema.org",
