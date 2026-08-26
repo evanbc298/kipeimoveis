@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
@@ -6,7 +7,7 @@ import Footer from "../../components/Footer";
 import WhatsAppFab from "../../components/WhatsAppFab";
 import Reveal from "../../components/Reveal";
 import JsonLd from "../../components/JsonLd";
-import { PROPERTIES } from "@/lib/data";
+import { PROPERTIES, BAIRROS } from "@/lib/data";
 import { SITE_URL, WHATSAPP_NUMBER } from "@/lib/site";
 
 type Props = {
@@ -41,7 +42,8 @@ export default async function ImovelPage({ params }: Props) {
   ).slice(0, 3);
 
   const priceNumber = Number(property.price.replace(/[^\d]/g, ""));
-  const areaMatch = property.specs.match(/(\d+)m²/);
+  const areaMatch = property.specs?.match(/(\d+)m²/);
+  const temPaginaDoBairro = BAIRROS.some((b) => b.slug === property.bairroSlug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -50,6 +52,7 @@ export default async function ImovelPage({ params }: Props) {
     description: property.description,
     url: `${SITE_URL}/imoveis/${property.slug}`,
     datePosted: new Date().toISOString().slice(0, 10),
+    image: property.images[0],
     price: priceNumber || undefined,
     priceCurrency: "BRL",
     address: {
@@ -100,15 +103,35 @@ export default async function ImovelPage({ params }: Props) {
           <div className="mx-auto max-w-5xl px-6 md:px-8">
             <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_1fr]">
               <Reveal>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl gradient-accent">
-                  <div className="absolute inset-0 flex items-end justify-start p-8 opacity-90">
-                    <div className="flex items-end gap-2.5">
-                      <span className="h-16 w-6 rounded-sm bg-white/70" />
-                      <span className="h-24 w-6 rounded-sm bg-white/80" />
-                      <span className="h-32 w-6 rounded-sm bg-white/95" />
-                    </div>
-                  </div>
+                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-lavender">
+                  <Image
+                    src={property.images[0]}
+                    alt={`${property.title}, ${property.bairro}`}
+                    fill
+                    priority
+                    sizes="(min-width: 768px) 60vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
+
+                {property.images.length > 1 && (
+                  <div className="mt-3 grid grid-cols-4 gap-3">
+                    {property.images.slice(1, 5).map((src, i) => (
+                      <div
+                        key={src}
+                        className="relative aspect-square overflow-hidden rounded-lg bg-lavender"
+                      >
+                        <Image
+                          src={src}
+                          alt={`${property.title} — foto ${i + 2}`}
+                          fill
+                          sizes="15vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <div className="mt-10">
                   <p className="text-sm font-semibold uppercase tracking-wider text-accent">
@@ -119,16 +142,18 @@ export default async function ImovelPage({ params }: Props) {
                   </p>
                 </div>
 
-                <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                  {property.specs.split(" · ").map((spec) => (
-                    <div
-                      key={spec}
-                      className="rounded-xl bg-lavender px-4 py-3 text-center text-sm font-medium text-ink"
-                    >
-                      {spec}
-                    </div>
-                  ))}
-                </div>
+                {property.specs && (
+                  <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+                    {property.specs.split(" · ").map((spec) => (
+                      <div
+                        key={spec}
+                        className="rounded-xl bg-lavender px-4 py-3 text-center text-sm font-medium text-ink"
+                      >
+                        {spec}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </Reveal>
 
               <Reveal delay={100}>
@@ -155,12 +180,14 @@ export default async function ImovelPage({ params }: Props) {
                     Agendar visita
                   </a>
 
-                  <Link
-                    href={`/bairros/${property.bairroSlug}`}
-                    className="mt-5 block text-center text-xs font-medium text-accent-2 hover:text-accent"
-                  >
-                    Ver mais sobre {property.bairro} →
-                  </Link>
+                  {temPaginaDoBairro && (
+                    <Link
+                      href={`/bairros/${property.bairroSlug}`}
+                      className="mt-5 block text-center text-xs font-medium text-accent-2 hover:text-accent"
+                    >
+                      Ver mais sobre {property.bairro} →
+                    </Link>
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -188,7 +215,9 @@ export default async function ImovelPage({ params }: Props) {
                         <p className="mt-2 font-display text-lg font-semibold text-accent-2">
                           {p.price}
                         </p>
-                        <p className="mt-1 text-xs text-muted">{p.specs}</p>
+                        {p.specs && (
+                          <p className="mt-1 text-xs text-muted">{p.specs}</p>
+                        )}
                       </Link>
                     </Reveal>
                   ))}

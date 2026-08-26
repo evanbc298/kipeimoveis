@@ -43,12 +43,6 @@ export default function ImoveisPage() {
             <Reveal>
               <ImoveisListing properties={PROPERTIES} />
             </Reveal>
-            <Reveal delay={100}>
-              <p className="mt-12 text-center text-xs text-muted">
-                Imóveis ilustrativos — o catálogo completo entra assim que os
-                primeiros imóveis forem cadastrados.
-              </p>
-            </Reveal>
           </div>
         </section>
       </main>
