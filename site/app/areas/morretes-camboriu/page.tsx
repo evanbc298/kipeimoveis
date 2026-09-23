@@ -351,7 +351,7 @@ export default function AreaMorretesCamboriuPage() {
         </section>
 
         {/* As marcações */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <Reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -367,16 +367,18 @@ export default function AreaMorretesCamboriuPage() {
               </p>
             </Reveal>
 
-            <div className="mt-12 grid gap-8 md:grid-cols-2">
+            <div className="mt-9 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-12 md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
               {MARCACOES.map((m, i) => (
                 <Reveal
                   key={m.titulo}
                   delay={i * 90}
-                  className={m.wide ? "md:col-span-2" : ""}
+                  className={`w-[86%] shrink-0 snap-start md:w-auto ${
+                    m.wide ? "md:col-span-2" : ""
+                  }`}
                 >
                   <figure className="h-full overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-[0_1px_3px_rgba(17,17,20,0.06)]">
                     <div
-                      className="relative bg-lavender"
+                      className="relative bg-lavender max-md:!aspect-[4/3]"
                       style={{ aspectRatio: m.ratio.replace("/", " / ") }}
                     >
                       <Image
@@ -385,14 +387,14 @@ export default function AreaMorretesCamboriuPage() {
                         fill
                         sizes={
                           m.wide
-                            ? "(min-width: 768px) 1100px, 100vw"
-                            : "(min-width: 768px) 540px, 100vw"
+                            ? "(min-width: 768px) 1100px, 86vw"
+                            : "(min-width: 768px) 540px, 86vw"
                         }
                         className="object-cover"
                       />
                     </div>
-                    <figcaption className="border-t border-black/[0.06] px-6 py-5">
-                      <p className="font-display text-lg font-semibold text-ink">
+                    <figcaption className="border-t border-black/[0.06] px-5 py-4 md:px-6 md:py-5">
+                      <p className="font-display text-base font-semibold text-ink md:text-lg">
                         {m.titulo}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -403,11 +405,14 @@ export default function AreaMorretesCamboriuPage() {
                 </Reveal>
               ))}
             </div>
+            <p className="mt-3 text-xs text-muted md:hidden">
+              Arraste para o lado para ver as três.
+            </p>
           </div>
         </section>
 
         {/* O terreno */}
-        <section className="bg-background py-20 md:py-28">
+        <section className="bg-background py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
               <div>
@@ -464,7 +469,7 @@ export default function AreaMorretesCamboriuPage() {
         </section>
 
         {/* Por que aqui */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <Reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -478,7 +483,7 @@ export default function AreaMorretesCamboriuPage() {
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {ARGUMENTOS.map((a, i) => (
                 <Reveal key={a.titulo} delay={i * 90}>
-                  <div className="h-full rounded-2xl border border-black/[0.07] bg-background p-7">
+                  <div className="h-full rounded-2xl border border-black/[0.07] bg-background p-6 md:p-7">
                     <p className="font-display text-lg font-semibold text-ink">
                       {a.titulo}
                     </p>
@@ -501,8 +506,26 @@ export default function AreaMorretesCamboriuPage() {
           </div>
         </section>
 
+        {/* CTA no meio — o celular não deve ter que rolar até o fim */}
+        <section className="border-y border-black/[0.07] bg-lavender py-10 md:py-14">
+          <div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 md:flex-row md:items-center md:justify-between md:px-8">
+            <div>
+              <p className="font-display text-xl font-semibold leading-snug text-ink md:text-2xl">
+                {AREA.precoCurto}, com {AREA.permuta} em permuta
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                Matrícula, planta e memorial de coordenadas liberados para
+                análise antes da proposta.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <BotaoWhats>Pedir a documentação</BotaoWhats>
+            </div>
+          </div>
+        </section>
+
         {/* Rota e acessos */}
-        <section className="bg-background py-20 md:py-28">
+        <section className="bg-background py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
               <div className="lg:sticky lg:top-24">
@@ -548,7 +571,7 @@ export default function AreaMorretesCamboriuPage() {
                   {ROTAS.map((r) => (
                     <li
                       key={r.destino}
-                      className="flex items-baseline justify-between gap-6 py-4"
+                      className="flex items-baseline justify-between gap-5 py-3.5 md:gap-6 md:py-4"
                     >
                       <div>
                         <p className="font-display text-base font-semibold text-ink">
@@ -575,7 +598,7 @@ export default function AreaMorretesCamboriuPage() {
         </section>
 
         {/* Valorização */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <Reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -589,7 +612,7 @@ export default function AreaMorretesCamboriuPage() {
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {VALORIZACAO.map((v, i) => (
                 <Reveal key={v.titulo} delay={i * 90}>
-                  <div className="h-full rounded-2xl border border-black/[0.07] bg-background p-7 transition-shadow hover:shadow-[0_12px_32px_rgba(108,60,233,0.14)]">
+                  <div className="h-full rounded-2xl border border-black/[0.07] bg-background p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(108,60,233,0.14)] md:p-7">
                     <p className="font-display text-4xl font-semibold tracking-tight text-accent-2">
                       {v.numero}
                     </p>
@@ -617,7 +640,7 @@ export default function AreaMorretesCamboriuPage() {
         </section>
 
         {/* Galeria */}
-        <section className="bg-background py-20 md:py-28">
+        <section className="bg-background py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <Reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -628,23 +651,29 @@ export default function AreaMorretesCamboriuPage() {
               </h2>
             </Reveal>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="mt-9 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-12 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0">
               {GALERIA.map((g, i) => (
                 <Reveal
                   key={g.src}
                   delay={i * 70}
-                  className={i === 0 ? "md:col-span-2" : ""}
+                  className={`w-[86%] shrink-0 snap-start md:w-auto ${
+                    i === 0 ? "md:col-span-2" : ""
+                  }`}
                 >
-                  <figure className="overflow-hidden rounded-2xl border border-black/[0.07] bg-white">
-                    <div className={`relative ${i === 0 ? "aspect-[16/7]" : "aspect-[16/9]"}`}>
+                  <figure className="h-full overflow-hidden rounded-2xl border border-black/[0.07] bg-white">
+                    <div
+                      className={`relative max-md:aspect-[4/3] ${
+                        i === 0 ? "md:aspect-[16/7]" : "md:aspect-[16/9]"
+                      }`}
+                    >
                       <Image
                         src={g.src}
                         alt={g.alt}
                         fill
                         sizes={
                           i === 0
-                            ? "(min-width: 768px) 1100px, 100vw"
-                            : "(min-width: 768px) 540px, 100vw"
+                            ? "(min-width: 768px) 1100px, 86vw"
+                            : "(min-width: 768px) 540px, 86vw"
                         }
                         className="object-cover"
                       />
@@ -656,11 +685,14 @@ export default function AreaMorretesCamboriuPage() {
                 </Reveal>
               ))}
             </div>
+            <p className="mt-3 text-xs text-muted md:hidden">
+              Arraste para o lado para ver as {GALERIA.length} fotos.
+            </p>
           </div>
         </section>
 
         {/* Ficha técnica */}
-        <section id="ficha" className="scroll-mt-20 bg-white py-20 md:py-28">
+        <section id="ficha" className="scroll-mt-20 bg-white py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <Reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -676,7 +708,7 @@ export default function AreaMorretesCamboriuPage() {
                 {FICHA.map((f) => (
                   <div
                     key={f.item}
-                    className="grid gap-1 py-4 sm:grid-cols-[230px_1fr] sm:gap-8"
+                    className="grid gap-1 py-3.5 sm:grid-cols-[230px_1fr] sm:gap-8 sm:py-4"
                   >
                     <dt className="text-sm font-semibold text-ink">{f.item}</dt>
                     <dd className="text-sm leading-relaxed text-ink-soft">
@@ -698,7 +730,7 @@ export default function AreaMorretesCamboriuPage() {
         </section>
 
         {/* Condições comerciais */}
-        <section className="bg-lavender py-20 md:py-28">
+        <section className="bg-lavender py-14 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <Reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -711,7 +743,7 @@ export default function AreaMorretesCamboriuPage() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               <Reveal delay={80}>
-                <div className="h-full rounded-2xl bg-white p-7 shadow-[0_1px_3px_rgba(17,17,20,0.06)]">
+                <div className="h-full rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(17,17,20,0.06)] md:p-7">
                   <p className="text-sm text-muted">Valor do terreno</p>
                   <p className="mt-2 font-display text-3xl font-semibold tracking-tight text-ink">
                     {AREA.precoCurto}
@@ -723,7 +755,7 @@ export default function AreaMorretesCamboriuPage() {
               </Reveal>
 
               <Reveal delay={160}>
-                <div className="h-full rounded-2xl bg-white p-7 shadow-[0_1px_3px_rgba(17,17,20,0.06)]">
+                <div className="h-full rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(17,17,20,0.06)] md:p-7">
                   <p className="text-sm text-muted">Permuta</p>
                   <p className="mt-2 font-display text-3xl font-semibold tracking-tight text-ink">
                     Até 50%
@@ -736,7 +768,7 @@ export default function AreaMorretesCamboriuPage() {
               </Reveal>
 
               <Reveal delay={240}>
-                <div className="h-full rounded-2xl bg-white p-7 shadow-[0_1px_3px_rgba(17,17,20,0.06)]">
+                <div className="h-full rounded-2xl bg-white p-6 shadow-[0_1px_3px_rgba(17,17,20,0.06)] md:p-7">
                   <p className="text-sm text-muted">Documentação</p>
                   <p className="mt-2 font-display text-3xl font-semibold tracking-tight text-ink">
                     Disponível
@@ -752,7 +784,7 @@ export default function AreaMorretesCamboriuPage() {
         </section>
 
         {/* CTA final */}
-        <section className="bg-white py-24 md:py-32">
+        <section className="bg-white py-16 md:py-32">
           <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
             <Reveal>
               <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-ink md:text-4xl">
