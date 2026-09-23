@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Criativos — Área Morretes, Camboriú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0b0a14;
+    --accent: #6c3ce9;
+    --accent-2: #4527b0;
+    --paper: #fafafa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #2a2a32; font-family: "Inter", sans-serif; }
+
+  .slide {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    margin: 40px auto;
+  }
+  .feed  { width: 1080px; height: 1350px; }
+  .story { width: 1080px; height: 1920px; }
+
+  .photo {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 10, 20, 0.58) 0%,
+      rgba(11, 10, 20, 0.12) 22%,
+      rgba(11, 10, 20, 0.16) 44%,
+      rgba(11, 10, 20, 0.58) 63%,
+      rgba(11, 10, 20, 0.93) 78%,
+      rgba(11, 10, 20, 0.985) 100%
+    );
+  }
+
+  .frame {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 72px 72px 78px;
+  }
+
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .logo { height: 40px; width: auto; }
+  .pill {
+    font-size: 19px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,0.32);
+    border-radius: 999px; padding: 11px 24px;
+    backdrop-filter: blur(6px); background: rgba(255,255,255,0.09);
+  }
+
+  .eyebrow {
+    font-size: 21px; font-weight: 700; letter-spacing: 0.26em;
+    text-transform: uppercase; color: #a996f8;
+  }
+
+  .metric {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700; color: #fff;
+    letter-spacing: -0.035em; line-height: 0.92;
+  }
+  .metric .unit { font-size: 0.5em; letter-spacing: -0.01em; }
+
+  .rule { height: 4px; width: 92px; background: var(--accent); border-radius: 2px; }
+
+  .badge {
+    display: inline-flex; align-items: baseline; gap: 14px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    border-radius: 14px; padding: 20px 30px;
+    box-shadow: 0 10px 34px rgba(108, 60, 233, 0.42);
+  }
+  .badge .price {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 42px; font-weight: 700; color: #fff; letter-spacing: -0.02em;
+  }
+  .badge .terms { font-size: 24px; font-weight: 500; color: rgba(255,255,255,0.88); }
+
+  .foot {
+    font-size: 25px; font-weight: 500; line-height: 1.45;
+    color: rgba(255,255,255,0.82);
+  }
+  .foot strong { color: #fff; font-weight: 600; }
+
+  /* ---- Modelo B: banda de foto + bloco sólido ---- */
+  .band { position: relative; width: 100%; background-size: cover; background-position: center; }
+  .band::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(11,10,20,0.34) 0%, rgba(11,10,20,0.05) 45%, rgba(11,10,20,0.9) 100%);
+  }
+  .band .top { position: absolute; top: 56px; left: 72px; right: 72px; z-index: 2; }
+
+  .block {
+    flex: 1; display: flex; flex-direction: column; justify-content: space-between;
+    padding: 64px 72px 78px;
+    background: var(--ink);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .headline {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700; color: #fff;
+    letter-spacing: -0.035em; line-height: 1.04;
+  }
+  .support { font-size: 30px; font-weight: 500; color: rgba(255,255,255,0.74); line-height: 1.4; }
+  .support b { color: #fff; font-weight: 600; }
+
+  .stack { display: flex; flex-direction: column; }
+</style>
+</head>
+<body>
+
+<!-- ============ A · FEED 1080x1350 ============ -->
+<div class="slide feed" id="a-feed">
+  <div class="photo" style="background-image:url('assets/a-satelite-feed.jpg')"></div>
+  <div class="scrim"></div>
+  <div class="frame">
+    <div class="top">
+      <img class="logo" src="assets/logo-white.png" alt="Kipe Imóveis" />
+      <span class="pill">Camboriú · SC</span>
+    </div>
+
+    <div class="stack" style="gap:30px">
+      <span class="eyebrow">Área para loteamento</span>
+      <div class="metric" style="font-size:172px">25.843<span class="unit"> m²</span></div>
+      <div class="rule"></div>
+      <div class="badge">
+        <span class="price">R$ 13,5 milhões</span>
+        <span class="terms">até 50% em permuta</span>
+      </div>
+      <p class="foot">
+        <strong>Morretes, Camboriú/SC</strong> — matrícula única, levantamento
+        georreferenciado e divisa com o Condomínio Caledônia.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ A · STORY 1080x1920 ============ -->
+<div class="slide story" id="a-story">
+  <div class="photo" style="background-image:url('assets/a-satelite-story.jpg')"></div>
+  <div class="scrim"></div>
+  <div class="frame" style="padding:120px 78px 150px">
+    <div class="top">
+      <img class="logo" src="assets/logo-white.png" alt="Kipe Imóveis" style="height:46px" />
+      <span class="pill">Camboriú · SC</span>
+    </div>
+
+    <div class="stack" style="gap:36px">
+      <span class="eyebrow" style="font-size:23px">Área para loteamento</span>
+      <div class="metric" style="font-size:196px">25.843<span class="unit"> m²</span></div>
+      <div class="rule"></div>
+      <div class="badge">
+        <span class="price" style="font-size:46px">R$ 13,5 milhões</span>
+        <span class="terms" style="font-size:26px">até 50% em permuta</span>
+      </div>
+      <p class="foot" style="font-size:28px">
+        <strong>Morretes, Camboriú/SC</strong> — matrícula única, levantamento
+        georreferenciado e divisa com o Condomínio Caledônia.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ B · FEED 1080x1350 ============ -->
+<div class="slide feed" id="b-feed" style="display:flex;flex-direction:column">
+  <div class="band" style="height:600px;background-image:url('assets/b-skyline-feed.jpg')">
+    <div class="top">
+      <img class="logo" src="assets/logo-white.png" alt="Kipe Imóveis" />
+      <span class="pill">Camboriú · SC</span>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="stack" style="gap:28px">
+      <span class="eyebrow">Gleba para loteamento</span>
+      <h1 class="headline" style="font-size:72px">A 7,8&nbsp;km de Balneário Camboriú.<br />R$&nbsp;522 o metro.</h1>
+      <div class="rule"></div>
+      <p class="support" style="font-size:27px"><b>25.843 m²</b> em Morretes, Camboriú — a 3,6 km do centro e a 4,8 km da BR-101.</p>
+    </div>
+
+    <div class="stack" style="gap:26px">
+      <div class="badge">
+        <span class="price">R$ 13,5 milhões</span>
+        <span class="terms">até 50% em permuta</span>
+      </div>
+      <p class="foot" style="font-size:23px">Matrícula única · levantamento topográfico georreferenciado</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ B · STORY 1080x1920 ============ -->
+<div class="slide story" id="b-story" style="display:flex;flex-direction:column">
+  <div class="band" style="height:760px;background-image:url('assets/b-skyline-story.jpg')">
+    <div class="top" style="top:110px">
+      <img class="logo" src="assets/logo-white.png" alt="Kipe Imóveis" style="height:46px" />
+      <span class="pill">Camboriú · SC</span>
+    </div>
+  </div>
+
+  <div class="block" style="padding:90px 78px 150px">
+    <div class="stack" style="gap:34px">
+      <span class="eyebrow" style="font-size:23px">Gleba para loteamento</span>
+      <h1 class="headline" style="font-size:88px">A 7,8&nbsp;km de Balneário Camboriú.<br />R$&nbsp;522 o metro.</h1>
+      <div class="rule"></div>
+      <p class="support" style="font-size:33px"><b>25.843 m²</b> em Morretes, Camboriú — a 3,6 km do centro e a 4,8 km da BR-101.</p>
+    </div>
+
+    <div class="stack" style="gap:30px">
+      <div class="badge">
+        <span class="price" style="font-size:46px">R$ 13,5 milhões</span>
+        <span class="terms" style="font-size:26px">até 50% em permuta</span>
+      </div>
+      <p class="foot" style="font-size:26px">Matrícula única · levantamento topográfico georreferenciado</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

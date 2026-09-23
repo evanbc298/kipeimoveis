@@ -3,8 +3,19 @@ import { SITE_URL } from "@/lib/site";
 import { PROPERTIES, BAIRROS } from "@/lib/data";
 import { BLOG_POSTS } from "@/lib/blog";
 
+// Gerado uma vez no build — exigido pelo export estático do GitHub Pages.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/imoveis", "/bairros", "/sobre", "/blog", "/vender-meu-imovel"].map(
+  const staticRoutes = [
+    "",
+    "/imoveis",
+    "/bairros",
+    "/sobre",
+    "/blog",
+    "/vender-meu-imovel",
+    "/areas/morretes-camboriu",
+  ].map(
     (path) => ({
       url: `${SITE_URL}${path}`,
       lastModified: new Date(),
