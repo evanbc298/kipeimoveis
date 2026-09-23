@@ -4,8 +4,7 @@ export const SITE_URL =
 
 export const SITE_NAME = "Kipe Imóveis";
 
-// TODO: trocar pelo número real de WhatsApp da Kipe Imóveis (formato: 55 + DDD + número, só dígitos).
-export const WHATSAPP_NUMBER = "5547900000000";
+export const WHATSAPP_NUMBER = "5547988258480";
 
 export const BUSINESS = {
   name: SITE_NAME,
@@ -14,7 +13,7 @@ export const BUSINESS = {
   areaServed: "Balneário Camboriú",
   addressRegion: "SC",
   addressCountry: "BR",
-  // TODO: preencher com telefone e CRECI reais.
-  telephone: "+55 47 90000-0000",
+  // TODO: preencher o CRECI real.
+  telephone: "+55 47 98825-8480",
   creci: "[preencher número]",
 };
